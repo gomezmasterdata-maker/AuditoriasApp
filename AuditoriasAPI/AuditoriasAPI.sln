@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditoriasAPI", "AuditoriasAPI.csproj", "{A1C1AE03-AFB6-E38F-3A04-5219B8C4EF2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1C1AE03-AFB6-E38F-3A04-5219B8C4EF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C1AE03-AFB6-E38F-3A04-5219B8C4EF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C1AE03-AFB6-E38F-3A04-5219B8C4EF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C1AE03-AFB6-E38F-3A04-5219B8C4EF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85556615-5629-4485-9B07-3269118DC877}
+	EndGlobalSection
+EndGlobal
