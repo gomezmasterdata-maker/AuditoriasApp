@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "bf1a086f-b8f8-42f9-9f7a-7efc3fd96a0b",
+		"name": "Gestión Auditorías API",
+		"description": "Colección de pruebas para la Evaluación Técnica Full Stack .NET.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37134950"
+	},
+	"item": [
+		{
+			"name": "1. Responsables",
+			"item": [
+				{
+					"name": "Listar Responsables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/responsables",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"responsables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Responsable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Usuario Postman\",\r\n  \"correo\": \"postman@demo.com\",\r\n  \"area\": \"Calidad\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/responsables",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"responsables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verificar Dependencias (Bloqueo)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/responsables/1/tiene-auditorias",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"responsables",
+								"1",
+								"tiene-auditorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Auditorías",
+			"item": [
+				{
+					"name": "Listar (Con Filtros)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auditorias?estado=Pendiente&responsableId=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auditorias"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "Pendiente",
+									"description": "Opcional"
+								},
+								{
+									"key": "responsableId",
+									"value": "1",
+									"description": "Opcional"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Auditoría",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Auditoría ISO 9001 - Q4\",\r\n  \"fechaInicio\": \"2023-11-01T00:00:00\",\r\n  \"areaAuditada\": \"Operaciones\",\r\n  \"responsableId\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auditorias",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auditorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Auditoría (Solo Pendiente)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Auditoría ISO 9001 - Q4 (Editada)\",\r\n  \"areaAuditada\": \"Operaciones Norte\",\r\n  \"fechaFin\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auditorias/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auditorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar Estado (Iniciar/Finalizar)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"En Proceso\""
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auditorias/1/estado",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auditorias",
+								"1",
+								"estado"
+							]
+						},
+						"description": "Enviar string directo: \"En Proceso\" o \"Finalizada\""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Hallazgos",
+			"item": [
+				{
+					"name": "Listar por Auditoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/hallazgos/por-auditoria/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hallazgos",
+								"por-auditoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Hallazgo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"Falta de documentación en proceso X\",\r\n  \"tipo\": \"No Conformidad\",\r\n  \"severidad\": \"Alta\",\r\n  \"fechaDeteccion\": \"2023-11-05T10:00:00\",\r\n  \"auditoriaId\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/hallazgos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hallazgos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Hallazgo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/hallazgos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"hallazgos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Reportes",
+			"item": [
+				{
+					"name": "Dashboard BI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reportes/dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reportes",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
